@@ -6,18 +6,21 @@ import Link from 'next/link'
 let recipes: Recipe[] = [
   { 
     title: 'Caccio e Pepe', 
+    blurb: 'A creamy pasta dish', 
     notes: '', 
     ingredients: [], 
     steps: []
   },
   { 
     title: 'The best puree', 
+    blurb: 'We used potatoes', 
     notes: '', 
     ingredients: [], 
     steps: []
   },
   { 
     title: 'Pain de Campagne', 
+    blurb: 'Country bread', 
     notes: '', 
     ingredients: [], 
     steps: []

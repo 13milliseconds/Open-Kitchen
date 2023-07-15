@@ -7,10 +7,11 @@ interface IngredientLine{
 }
 
 interface Recipe {
-    title: string;
-    notes: string;
-    ingredients: IngredientLine[];
-    steps: Step[];
+    title: string
+    blurb: string
+    notes: string
+    ingredients: IngredientLine[]
+    steps: Step[]
   }
 
   export type {
