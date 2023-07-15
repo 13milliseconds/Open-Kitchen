@@ -3,6 +3,7 @@ import Link from 'next/link'
 import type  { Recipe, IngredientLine } from '@/interfaces'
 import TextInput from '@/components/TextInput'
 import IngredientsRender from '@/components/IngredientsRender'
+import Head from 'next/head'
 
 export default function App() {
   const [recipe, setRecipe] = useState<Recipe>({
@@ -32,6 +33,10 @@ export default function App() {
   }
 
   return <div className="App p-6">
+    <Head>
+      <title>New Recipe</title>
+    </Head>
+
   <header className="App-header">
     <h1 className='text-3xl font-bold'>Add Recipe</h1>
     <Link href="/" className='bg-blue-600 text-white p-2 rounded'>Back</Link>
