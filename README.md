@@ -1,4 +1,5 @@
 # Open-Kitchen
-##Git for recipes
+Git for recipes
 
 In Progress
+
