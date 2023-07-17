@@ -2,6 +2,7 @@ import React from 'react'
 import type  { Recipe } from '@/interfaces'
 import RecipeCard from '@/components/RecipeCard/RecipeCard'
 import Link from 'next/link'
+import Profile from '@/components/Profile/Profile'
 
 let recipes: Recipe[] = [
   { 

@@ -14,6 +14,10 @@ import dotenv from "dotenv";
     res.send('Hello World From the Typescript Server!')
   });
 
+  app.use('/login', (req: Request, res: Response) => {
+    
+  })
+
   const port = process.env.PORT || 8000;
 
   app.listen(port, () => {
