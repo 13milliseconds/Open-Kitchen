@@ -7,6 +7,7 @@ import Head from 'next/head'
 
 export default function App() {
   const [recipe, setRecipe] = useState<Recipe>({
+    _id: "",
     title: "",
     blurb: "",
     notes: "", 

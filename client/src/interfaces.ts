@@ -7,6 +7,7 @@ interface IngredientLine{
 }
 
 interface Recipe {
+    _id: string
     title: string
     blurb: string
     notes: string

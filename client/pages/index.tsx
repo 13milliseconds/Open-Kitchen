@@ -2,10 +2,10 @@ import React from 'react'
 import type  { Recipe } from '@/interfaces'
 import RecipeCard from '@/components/RecipeCard/RecipeCard'
 import Link from 'next/link'
-import Profile from '@/components/Profile/Profile'
 
 let recipes: Recipe[] = [
   { 
+    _id: "",
     title: 'Caccio e Pepe', 
     blurb: 'A creamy pasta dish', 
     notes: '', 
@@ -13,6 +13,7 @@ let recipes: Recipe[] = [
     steps: []
   },
   { 
+    _id: "",
     title: 'The best puree', 
     blurb: 'We used potatoes', 
     notes: '', 
@@ -20,6 +21,7 @@ let recipes: Recipe[] = [
     steps: []
   },
   { 
+    _id: "",
     title: 'Pain de Campagne', 
     blurb: 'Country bread', 
     notes: '', 
