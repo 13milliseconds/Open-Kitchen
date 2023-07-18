@@ -8,7 +8,7 @@ let recipes: Recipe[] = [
     _id: "",
     title: 'Caccio e Pepe', 
     blurb: 'A creamy pasta dish', 
-    notes: '', 
+    servings: 4,
     ingredients: [], 
     steps: []
   },
@@ -16,7 +16,7 @@ let recipes: Recipe[] = [
     _id: "",
     title: 'The best puree', 
     blurb: 'We used potatoes', 
-    notes: '', 
+    servings: 4,
     ingredients: [], 
     steps: []
   },
@@ -24,7 +24,7 @@ let recipes: Recipe[] = [
     _id: "",
     title: 'Pain de Campagne', 
     blurb: 'Country bread', 
-    notes: '', 
+    servings: 4,
     ingredients: [], 
     steps: []
   },

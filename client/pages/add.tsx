@@ -2,27 +2,22 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import type  { Recipe, IngredientLine } from '@/interfaces'
 import TextInput from '@/components/TextInput'
-import IngredientsRender from '@/components/IngredientsRender'
 import Head from 'next/head'
+import IngredientsSelector from '@/components/IngredientsSelector/IngredientsSelector'
+import { useSaveRecipe } from '@/utils/hooks'
 
 export default function App() {
+  const [loading, error, saveRecipe] = useSaveRecipe()
   const [recipe, setRecipe] = useState<Recipe>({
-    _id: "",
+    _id: null,
     title: "",
-    blurb: "",
-    notes: "", 
+    servings: 4,
     ingredients: [], 
     steps: []
   })
-  const [newIngredient, setNewIngredient] = useState("")
 
-  const addIngredient = () => {
-    setRecipe(prevState => Object.assign({}, prevState, {ingredients: [...prevState.ingredients, {ingredient: newIngredient}]}))
-    setNewIngredient("")
-  }
-
-  const handleSetNewIngredient = (value: string) => {
-    setNewIngredient(value)
+  const addIngredient = (newIngredient: IngredientLine) => {
+    setRecipe(prevState => Object.assign({}, prevState, {ingredients: [...prevState.ingredients, newIngredient]}))
   }
   
   const handleSetTitle = (value: string) => {
@@ -31,6 +26,17 @@ export default function App() {
   
   const handleSetBlurb = (value: string) => {
     setRecipe(prevState => Object.assign({}, prevState, {blurb: value}))
+  }
+
+  const handleSaveRecipe = async () => {
+    const data = await saveRecipe(recipe)
+    const newId = data.insertedId
+    if(data.insertedId) setRecipe(prevState => Object.assign({}, prevState, {_id: newId}))
+  }
+
+  const handleValidation = () => {
+    if(!recipe.title) return false
+    return true
   }
 
   return <div className="App p-6">
@@ -54,36 +60,25 @@ export default function App() {
       </h2>
       <h4>
       <TextInput 
-        text={recipe.blurb} 
+        text={recipe.blurb || ''} 
         type='textarea'
         placeholder="Blurb"
         setText={handleSetBlurb} 
       />
       </h4>
     </section>
-    <section className='bg-gray-100 rounded p-6 mb-6'>
-      <h2 className='font-bold'>Ingredients</h2>
-      <IngredientsRender 
-        ingredients={recipe.ingredients} 
-      />
-      <div className='flex'>
-      <TextInput 
-        text={newIngredient} 
-        type='input'
-        placeholder="Type an ingredient"
-        setText={handleSetNewIngredient} 
-      />
-      <button  
-        className="bg-blue-500 text-white font-bold rounded ml-2 p-2 disabled:opacity-50 transition-opacity" 
-        disabled={!newIngredient} 
-        onClick={addIngredient}
-        >Add Ingredient</button>
-        </div>
-    </section>
+    
+    <IngredientsSelector ingredients={recipe.ingredients} addIngredient={addIngredient} /> 
 
     <section className='bg-gray-100 rounded p-6 mb-6'>
       <h2>Steps</h2>
     </section>
+    <footer>
+      <button 
+        onClick={handleSaveRecipe} 
+        disabled={!handleValidation()}
+        className='p-2 bg-blue-500 text-white rounded'>{loading? 'Saving...' : 'Save Recipe'}</button>
+    </footer>
     <pre>
       {JSON.stringify(recipe, null, '\t')}
     </pre>

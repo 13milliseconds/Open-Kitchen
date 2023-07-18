@@ -1,3 +1,4 @@
+
 interface Step {
   text: string
 }
@@ -7,12 +8,13 @@ interface IngredientLine{
 }
 
 interface Recipe {
-    _id: string
+    _id: string | null
     title: string
-    blurb: string
-    notes: string
+    blurb?: string
+    servings: number
     ingredients: IngredientLine[]
     steps: Step[]
+    notes?: string
   }
 
   export type {
