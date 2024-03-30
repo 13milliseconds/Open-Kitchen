@@ -10,6 +10,7 @@ interface IngredientLine{
 interface Recipe {
     _id: string | null
     title: string
+    slug: string
     blurb?: string
     servings: number
     ingredients: IngredientLine[]

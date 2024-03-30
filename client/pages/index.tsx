@@ -6,6 +6,7 @@ import Link from 'next/link'
 let recipes: Recipe[] = [
   { 
     _id: "",
+    slug: "",
     title: 'Caccio e Pepe', 
     blurb: 'A creamy pasta dish', 
     servings: 4,
@@ -14,6 +15,7 @@ let recipes: Recipe[] = [
   },
   { 
     _id: "",
+    slug: "",
     title: 'The best puree', 
     blurb: 'We used potatoes', 
     servings: 4,
@@ -22,6 +24,7 @@ let recipes: Recipe[] = [
   },
   { 
     _id: "",
+    slug: "",
     title: 'Pain de Campagne', 
     blurb: 'Country bread', 
     servings: 4,

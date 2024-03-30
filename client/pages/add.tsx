@@ -5,12 +5,14 @@ import TextInput from '@/components/TextInput'
 import Head from 'next/head'
 import IngredientsSelector from '@/components/IngredientsSelector/IngredientsSelector'
 import { useSaveRecipe } from '@/utils/hooks'
+import slugify from 'slugify'
 
 export default function App() {
   const [loading, error, saveRecipe] = useSaveRecipe()
   const [recipe, setRecipe] = useState<Recipe>({
     _id: null,
     title: "",
+    slug: "",
     servings: 4,
     ingredients: [], 
     steps: []
@@ -29,6 +31,7 @@ export default function App() {
   }
 
   const handleSaveRecipe = async () => {
+    if(!recipe.slug) setRecipe(prevState => Object.assign({}, prevState, {slug: slugify(recipe.title)}))
     const data = await saveRecipe(recipe)
     const newId = data.insertedId
     if(data.insertedId) setRecipe(prevState => Object.assign({}, prevState, {_id: newId}))
